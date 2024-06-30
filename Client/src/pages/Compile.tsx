@@ -2,6 +2,7 @@ import React from 'react';
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable";
 import CodeEditor from '@/components/CodeEditor';
 import HelperHeader from '@/components/HelperHeader';
+import RenderCode from '@/components/RenderCode';
  
 
 const Compile: React.FC = () => {
@@ -12,14 +13,14 @@ const Compile: React.FC = () => {
         direction="horizontal"
         className="w-full h-full   border"
       >
-        <ResizablePanel className="min-w-350px h-[calc(100vh-60px)]"defaultSize={50}>
+        <ResizablePanel className="min-w-350px h-[calc(100dvh-60px)]"defaultSize={50}>
            <HelperHeader/>
            <CodeEditor/>
         </ResizablePanel>
         <ResizableHandle />
-        <ResizablePanel className="min-w-350px h-[calc(100vh-60px)]" defaultSize={50}>
-           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod itaque, quae a, illo nesciunt facere cumque cum et, laudantium
-            dolore rerum fugiat harum ipsum distinctio atque veniam. Perferendis, hic tempore.
+        <ResizablePanel className="min-w-350px h-[calc(100dvh-60px)]" defaultSize={50}>
+            
+            <RenderCode/>
         </ResizablePanel>
       </ResizablePanelGroup>
     </div>
