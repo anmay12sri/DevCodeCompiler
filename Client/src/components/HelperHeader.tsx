@@ -11,18 +11,32 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { CompilerSliceStateType, updateCurrentLanguage } from '@/redux/slices/Compilerslice';
 import { RootState } from '@/redux/store';
+import { handleError } from '@/utils/handleError';
+import axios from 'axios';
  
   
 
 
 
 export default function HelperHeader() {
+  const fullCode=useSelector((state:RootState)=>state.Compilerslice.fullcode)
+  const handleSaveCode=async()=>{
+     try{
+          const response=await axios.post('http://localhost:4000/compiler/save',{
+            fullCode:fullCode,
+          })
+          console.log(response.data);
+          
+     }catch(error){
+       handleError(error)
+     }
+  }
   const dispatch=useDispatch();
    const currentLanguage=useSelector((state:RootState)=>state.Compilerslice.currentLanguage)
   return (
     <div className="__helper_header h-[50px] bg-black text-white p-2 flex justify-between items-center">
       <div className="__btn_container flex gap-3">
-        <Button className='hover:bg-green-700 gap-1' variant="success">
+        <Button onClick={handleSaveCode}className='hover:bg-green-700 gap-1' variant="success">
         <Save size={16} />Save
             </Button>
         <Button  variant="secondary" className='gap-1'>
