@@ -3,10 +3,12 @@ import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/componen
 import CodeEditor from '@/components/CodeEditor';
 import HelperHeader from '@/components/HelperHeader';
 import RenderCode from '@/components/RenderCode';
+import { useParams } from 'react-router-dom';
  
 
 const Compile: React.FC = () => {
-  
+  const {urlId} = useParams();
+  console.log(urlId)
   return (
     <div className="h-[calc(100vh-60px)]">
       <ResizablePanelGroup

@@ -13,12 +13,14 @@ import { CompilerSliceStateType, updateCurrentLanguage } from '@/redux/slices/Co
 import { RootState } from '@/redux/store';
 import { handleError } from '@/utils/handleError';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
  
   
 
 
 
 export default function HelperHeader() {
+  const navigate=useNavigate()
   const fullCode=useSelector((state:RootState)=>state.Compilerslice.fullcode)
   const handleSaveCode=async()=>{
      try{
@@ -26,6 +28,7 @@ export default function HelperHeader() {
             fullCode:fullCode,
           })
           console.log(response.data);
+          navigate(response.data.urlId)
           
      }catch(error){
        handleError(error)
